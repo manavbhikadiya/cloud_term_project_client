@@ -55,8 +55,8 @@ const Home = () => {
 
   return (
     <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-6 col-lg-4">
+      <div className="row">
+        <div className="col-md-6 col-lg-6">
           <form>
             <div className="input-group mb-3">
               <div className="custom-file">
@@ -84,22 +84,27 @@ const Home = () => {
               type="submit"
               className="btn btn-block"
               onClick={handleRecognize}
+              style={{marginBottom:"50px"}}
             >
               Recognize Image
             </button>
           )}
         </div>
-        <div>
-          <table border={1}>
-            <tr>
-              <th>LABELS</th>
-            </tr>
-            {data?.labels?.map((val, index) => (
-              <tr key={index}>
-                <td>{val}</td>
+        <div className="col-md-6 col-lg-6">
+          <div>
+            <table border={2} cellPadding={5}>
+              <tr>
+                <th>Labels</th>
+                <th>Confidence</th>
               </tr>
-            ))}
-          </table>
+              {data?.labels?.map((val, index) => (
+                <tr key={index}>
+                  <td>{val.label}</td>
+                  <td>{val.confidence}</td>
+                </tr>
+              ))}
+            </table>
+          </div>
         </div>
       </div>
     </div>
