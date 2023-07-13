@@ -1,10 +1,7 @@
 import axios from "axios";
+import api from "./auth.interceptor";
 
 const IMAGE_RECOGNITION = process.env.REACT_APP_IMAGE_RECOGNITION_URL;
-
-const headers = {
-  Authorization: localStorage.getItem("AccessToken"),
-};
 
 export const CreateUser = (data) =>
   axios.post(`${IMAGE_RECOGNITION}/users/create`, data);
@@ -15,4 +12,4 @@ export const VerifyOTP = (data) =>
 export const Login = (data) =>
   axios.post(`${IMAGE_RECOGNITION}/auth/login`, data);
 export const RecognizeImage = (data) =>
-  axios.post(`${IMAGE_RECOGNITION}/recognize-image`, data, { headers });
+  api.post(`${IMAGE_RECOGNITION}/recognize-image`, data);
